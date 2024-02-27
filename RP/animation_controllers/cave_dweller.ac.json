@@ -1,0 +1,66 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.cave_dweller.def": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"blend_transition": 0.5,
+					"animations": [
+						"idle"
+					],
+					"transitions": [
+						{
+							"walking": "query.ground_speed"
+						},
+						{
+							"attacking": "variable.has_target && variable.attack_time >= 0.1"
+						}
+					]
+				},
+				"walking": {
+					"blend_transition": 0.5,
+					"animations": [
+						"walking"
+					],
+					"transitions": [
+						{
+							"default": "!query.ground_speed"
+						},
+						{
+							"running": "query.ground_speed > 10"
+						},
+						{
+							"attacking": "variable.has_target && variable.attack_time >= 0.1"
+						}
+					]
+				},
+				"running": {
+					"blend_transition": 0.5,
+					"animations": [
+						"run"
+					],
+					"transitions": [
+						{
+							"default": "!query.ground_speed"
+						},
+						{
+							"attacking": "variable.has_target && variable.attack_time >= 0.1"
+						}
+					]
+				},
+				"attacking": {
+					"blend_transition": 1,
+					"animations": [
+						"attack"
+					],
+					"transitions": [
+						{
+							"default": "variable.attack_time < 0.1"
+						}
+					]
+				}
+			}
+		}
+	}
+}

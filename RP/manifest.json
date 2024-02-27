@@ -1,0 +1,52 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"Marcos & Kalil"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.11"
+			],
+			"dash": [
+				"github:bridge-core/dash-compiler#8fa35c73292f6382747d0f411fca26431a6d2c8e"
+			]
+		}
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"min_engine_version": [
+			1,
+			20,
+			60
+		],
+		"uuid": "640f31f6-8451-4f03-b473-813145311b90",
+		"version": [
+			1,
+			0,
+			56
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "b981357b-6c03-42d0-849c-a5fc49e8d4cc",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "43ab5c52-35c0-4210-9798-052ac2b0b582",
+			"version": [
+				1,
+				0,
+				56
+			]
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:spawn_rules": {
+		"description": {
+			"identifier": "mk:cave_dweller",
+			"population_control": "monster"
+		},
+		"conditions": [
+			{
+				"minecraft:spawns_underground": {},
+				"minecraft:brightness_filter": {
+					"min": 0,
+					"max": 9,
+					"adjust_for_weather": false
+				},
+				"minecraft:difficulty_filter": {
+					"min": "easy",
+					"max": "hard"
+				},
+				"minecraft:weight": {
+					"default": 10
+				},
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"operator": "==",
+					"value": "monster"
+				},
+				"minecraft:density_limit": {
+					"underground": 1
+				},
+				"minecraft:delay_filter": {
+					"min": 300,
+					"max": 600,
+					"spawn_chance": 60,
+					"identifier": "mk:cave_dweller"
+				}
+			}
+		]
+	}
+}

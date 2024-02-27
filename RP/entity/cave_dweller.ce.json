@@ -1,0 +1,38 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mk:cave_dweller",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/cave_dweller"
+			},
+			"geometry": {
+				"default": "geometry.cave_dweller"
+			},
+			"render_controllers": [
+				"controller.render.cave_dweller"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"animations": {
+				"idle": "animation.cave_dweller.idle",
+				"walking": "animation.cave_dweller.walking",
+				"def": "controller.animation.cave_dweller.def",
+				"attack": "animation.cave_dweller.attack",
+				"run": "animation.cave_dweller.run",
+				"look_at_target": "animation.common.look_at_target"
+			},
+			"scripts": {
+				"animate": [
+					"def",
+					"look_at_target"
+				]
+			}
+		}
+	}
+}

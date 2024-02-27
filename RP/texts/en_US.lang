@@ -1,0 +1,4 @@
+pack.name=Cave Dweller RP
+pack.description=Cave Dweller
+item.spawn_egg.entity.mk:cave_dweller.name=Spawn Cave Dweller
+entity.mk:cave_dweller.name=Cave Dweller

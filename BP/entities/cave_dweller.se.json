@@ -1,0 +1,192 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "mk:cave_dweller",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"mk:dweller_calm": {
+				"minecraft:lookat": {
+					"search_radius": 64,
+					"look_cooldown": 20,
+					"filters": {
+						"subject": "other",
+						"test": "is_family",
+						"value": "player"
+					},
+					"set_target": true
+				},
+				"minecraft:on_target_acquired": {
+					"event": "mk:hunt",
+					"target": "self"
+				}
+			},
+			"mk:dweller_hunt": {
+				"minecraft:follow_range": {
+					"value": 48
+				},
+				"minecraft:behavior.melee_attack": {
+					"priority": 2,
+					"track_target": true,
+					"speed_multiplier": 1.5
+				},
+				"minecraft:behavior.nearest_attackable_target": {
+					"priority": 3,
+					"must_see": false,
+					"must_see_forget_duration": 8,
+					"reselect_targets": true,
+					"entity_types": {
+						"filters": {
+							"subject": "other",
+							"test": "is_family",
+							"value": "player"
+						}
+					}
+				},
+				"minecraft:behavior.move_towards_target": {
+					"priority": 3,
+					"within_radius": 64,
+					"speed_multiplier": 1.8
+				},
+				"minecraft:angry": {
+					"duration": 300,
+					"calm_event": {
+						"event": "mk:calm",
+						"target": "self"
+					}
+				},
+				"minecraft:mob_effect": {
+					"effect_range": 32,
+					"effect_time": 10,
+					"mob_effect": "darkness",
+					"entity_filter": {
+						"all_of": [
+							{
+								"subject": "other",
+								"test": "is_family",
+								"value": "player"
+							},
+							{
+								"subject": "other",
+								"operator": "not",
+								"test": "has_ability",
+								"value": "invulnerable"
+							}
+						]
+					}
+				},
+				"minecraft:on_target_escape": {
+					"event": "mk:calm",
+					"target": "self"
+				}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"monster"
+				]
+			},
+			"minecraft:health": {
+				"value": 100,
+				"max": 100
+			},
+			"minecraft:physics": {
+				"has_collision": true,
+				"has_gravity": true
+			},
+			"minecraft:can_climb": {},
+			"minecraft:jump.static": {
+				"jump_power": 0.5
+			},
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 3
+			},
+			"minecraft:attack": {
+				"damage": 8
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.9
+			},
+			"minecraft:on_hurt_by_player": {
+				"event": "mk:hunt",
+				"target": "self"
+			},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 7,
+				"speed_multiplier": 0.4
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 8,
+				"look_distance": 32,
+				"probability": 0.2
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 8,
+				"look_time": [
+					1,
+					5
+				]
+			},
+			"minecraft:movement": {
+				"value": 0.5
+			},
+			"minecraft:movement.basic": {
+				"max_turn": 50
+			},
+			"minecraft:navigation.walk": {
+				"avoid_portals": true,
+				"avoid_damage_blocks": true,
+				"can_break_doors": true,
+				"can_open_iron_doors": true,
+				"can_swim": true
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"mk:dweller_calm"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"mk:dweller_hunt"
+					]
+				}
+			},
+			"mk:calm": {
+				"remove": {
+					"component_groups": [
+						"mk:dweller_hunt"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"mk:dweller_calm"
+					]
+				}
+			},
+			"mk:hunt": {
+				"remove": {
+					"component_groups": [
+						"mk:dweller_calm"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"mk:dweller_hunt"
+					]
+				}
+			}
+		}
+	}
+}
