@@ -25,6 +25,7 @@
 				}
 			},
 			"mk:dweller_hunt": {
+				"minecraft:can_climb": {},
 				"minecraft:follow_range": {
 					"value": 48
 				},
@@ -144,12 +145,14 @@
 			"minecraft:movement.basic": {
 				"max_turn": 50
 			},
-			"minecraft:navigation.walk": {
+			"minecraft:navigation.climb": {
 				"avoid_portals": true,
 				"avoid_damage_blocks": true,
 				"can_break_doors": true,
 				"can_open_iron_doors": true,
-				"can_swim": true
+				"can_sink": false,
+				"can_float": true,
+				"can_jump": true
 			}
 		},
 		"events": {
