@@ -16,8 +16,8 @@
 				"controller.render.cave_dweller"
 			],
 			"spawn_egg": {
-				"base_color": "#000000",
-				"overlay_color": "#FFFFFF"
+				"base_color": "#452702",
+				"overlay_color": "#6f0202"
 			},
 			"animations": {
 				"idle": "animation.cave_dweller.idle",
